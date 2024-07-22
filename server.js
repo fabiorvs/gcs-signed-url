@@ -53,7 +53,6 @@ async function processHtmlContent(htmlContent, baseDir) {
   return htmlContent;
 }
 
-// Rota para servir o HTML processado diretamente do bucket
 app.get("/html/*", async (req, res) => {
   const filename = req.params[0];
   try {
@@ -67,9 +66,8 @@ app.get("/html/*", async (req, res) => {
   }
 });
 
-// Rota para redirecionar para a URL autenticada de um único arquivo
 app.get("/redirect/*", async (req, res) => {
-  const filename = req.params[0]; // Pega o caminho completo do arquivo
+  const filename = req.params[0];
 
   try {
     const signedUrl = await generateSignedUrl(filename);
