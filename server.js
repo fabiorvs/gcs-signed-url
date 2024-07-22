@@ -5,21 +5,18 @@ const fs = require("fs").promises;
 const app = express();
 const port = 3000;
 
-// Substitua com os valores do seu projeto
 const bucketName = "cdse-prd";
 const serviceAccountKeyPath = path.join(__dirname, "config/service.json");
 
-// Instancia o cliente de armazenamento
 const storage = new Storage({
   keyFilename: serviceAccountKeyPath,
 });
 
-// Função para gerar a URL autenticada
 async function generateSignedUrl(filename) {
   const options = {
     version: "v4",
     action: "read",
-    expires: Date.now() + 60 * 60 * 1000, // 1 hora
+    expires: Date.now() + 60 * 60 * 1000,
   };
 
   const [url] = await storage
@@ -29,7 +26,6 @@ async function generateSignedUrl(filename) {
   return url;
 }
 
-// Função para obter o conteúdo do arquivo HTML do bucket
 async function getHtmlContentFromBucket(filename) {
   const file = storage.bucket(bucketName).file(filename);
   const contents = await file.download();
