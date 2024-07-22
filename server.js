@@ -32,7 +32,6 @@ async function getHtmlContentFromBucket(filename) {
   return contents.toString("utf-8");
 }
 
-// Função para processar o conteúdo do HTML e substituir URLs
 async function processHtmlContent(htmlContent, baseDir) {
   const urlRegex = /src="([^"]+)"|href="([^"]+)"/g;
   let match;
