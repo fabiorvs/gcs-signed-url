@@ -1,6 +1,5 @@
 #key
-service.json
-# Logs
+service.json# Logs
 logs
 *.log
 npm-debug.log*
@@ -50,3 +49,7 @@ build/
 
 # Arquivos de chave de serviço
 path/to/your-service-account-key.json
+
+# Docker
+docker-compose.yml
+Dockerfile
